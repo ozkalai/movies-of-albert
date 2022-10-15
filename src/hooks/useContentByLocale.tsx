@@ -11,10 +11,7 @@ interface Content {
   categories: Categories;
 }
 
-interface Translations {
-  en: Content;
-  tr: Content;
-}
+type Translations = Record<"en" | "tr", Content>;
 
 const translations: Translations = {
   en: {
