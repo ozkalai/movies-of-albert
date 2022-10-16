@@ -1,27 +1,16 @@
 import React from "react";
 import { useRouter } from "next/router";
-
-interface Categories {
-  popular: string;
-  topRated: string;
-  upcoming: string;
-}
-
-interface Content {
-  categories: Categories;
-}
-
-type Translations = Record<"en" | "tr", Content>;
+import { Translations, Content } from "../typings/translation";
 
 const translations: Translations = {
-  en: {
+  "en-US": {
     categories: {
       popular: "Popular Movies",
       topRated: "Top Rated Movies",
       upcoming: "Upcoming Movies",
     },
   },
-  tr: {
+  "tr-TR": {
     categories: {
       popular: "Popüler Filmler",
       topRated: "En İyi Filmler",
@@ -30,21 +19,21 @@ const translations: Translations = {
   },
 };
 
-const ContentByLocaleContext = React.createContext<Content>({} as Content);
+const TranslationContext = React.createContext<Content>({} as Content);
 
-export const ContentByLocaleProvider = ({ children }: any) => {
+export const TranslationProvider = ({ children }: any) => {
   const { locale } = useRouter();
   const content = translations[(locale || "en") as keyof Translations];
 
   return (
-    <ContentByLocaleContext.Provider value={content}>
+    <TranslationContext.Provider value={content}>
       {children}
-    </ContentByLocaleContext.Provider>
+    </TranslationContext.Provider>
   );
 };
 
-export const useContentByLocale = () => {
-  const context = React.useContext(ContentByLocaleContext);
+export const useTranslation = () => {
+  const context = React.useContext(TranslationContext);
 
   return context;
 };

@@ -1,7 +1,8 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { ContentByLocaleProvider } from "../src/hooks/useContentByLocale";
+import { TranslationProvider } from "../src/hooks/useTranslation";
 import { ChakraProvider } from "@chakra-ui/react";
+import axios from "axios";
 
 import { extendTheme } from "@chakra-ui/react";
 
@@ -19,15 +20,14 @@ const colors = {
 };
 
 const theme = extendTheme({ colors });
-
-console.log("theme", theme);
+axios.defaults.baseURL = "https://api.themoviedb.org/3/movie";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
-      <ContentByLocaleProvider>
+      <TranslationProvider>
         <Component {...pageProps} />
-      </ContentByLocaleProvider>
+      </TranslationProvider>
     </ChakraProvider>
   );
 }
