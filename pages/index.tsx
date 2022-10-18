@@ -47,8 +47,6 @@ const Home: NextPage<IHomeProps> = ({
   const [movies, setMovies] = React.useState<IMovie[]>(popularMovies);
   const [selectedType, setSelectedType] = React.useState("popular");
 
-  console.log("upcomingMovies", upcomingMovies);
-
   useEffect(() => {
     switch (selectedType) {
       case "popular":
