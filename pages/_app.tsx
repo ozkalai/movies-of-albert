@@ -3,8 +3,9 @@ import type { AppProps } from "next/app";
 import { TranslationProvider } from "../src/hooks/useTranslation";
 import { ChakraProvider } from "@chakra-ui/react";
 import axios from "axios";
-
 import { extendTheme } from "@chakra-ui/react";
+
+import { UIProvider } from "../src/contexts/UIContext";
 
 const colors = {
   background: {
@@ -24,11 +25,13 @@ axios.defaults.baseURL = "https://api.themoviedb.org/3/movie";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider theme={theme}>
-      <TranslationProvider>
-        <Component {...pageProps} />
-      </TranslationProvider>
-    </ChakraProvider>
+    <UIProvider>
+      <ChakraProvider theme={theme}>
+        <TranslationProvider>
+          <Component {...pageProps} />
+        </TranslationProvider>
+      </ChakraProvider>
+    </UIProvider>
   );
 }
 
