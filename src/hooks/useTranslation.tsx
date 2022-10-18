@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { Translations, Content } from "../typings/translation";
+import { Translations, Categories } from "../typings/translation";
 
 const translations: Translations = {
   "en-US": {
@@ -19,14 +19,22 @@ const translations: Translations = {
   },
 };
 
-const TranslationContext = React.createContext<Content>({} as Content);
+interface IContext {
+  categories: Categories;
+  currentLanguage: string;
+  setCurrentLanguage: (language: "en-US" | "tr-TR") => void;
+}
+
+const TranslationContext = React.createContext<Categories>({} as Categories);
 
 export const TranslationProvider = ({ children }: any) => {
   const { locale } = useRouter();
-  const content = translations[(locale || "en") as keyof Translations];
+
+  const categories =
+    translations[(locale || "en") as keyof Translations].categories;
 
   return (
-    <TranslationContext.Provider value={content}>
+    <TranslationContext.Provider value={categories}>
       {children}
     </TranslationContext.Provider>
   );
