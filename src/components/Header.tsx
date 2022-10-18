@@ -19,6 +19,12 @@ const Header = () => {
       alignItems="center"
     >
       <Box
+        display={{ base: "block", md: "none" }}
+        ml={5}
+        w="12px"
+        h="12px"
+      ></Box>
+      <Box
         textAlign="center"
         display="flex"
         justifyContent="center"
@@ -40,9 +46,11 @@ const Header = () => {
           bg="transparent"
           color="white"
           aria-label="hamburger-button"
-          onClick={() =>
-            setDisplaySider(displaySider === "block" ? "none" : "block")
-          }
+          onClick={() => {
+            setDisplaySider(displaySider === "block" ? "none" : "block");
+            document.body.style.overflow =
+              displaySider === "block" ? "auto" : "hidden";
+          }}
           p={"2px"}
         >
           {displaySider === "block" ? <CloseIcon /> : <HamburgerIcon />}
