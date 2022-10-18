@@ -1,5 +1,3 @@
-// I want to write a context that will be show or hide the sider
-
 import React, { createContext, useState } from "react";
 
 interface IContextProps {
