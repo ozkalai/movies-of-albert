@@ -8,7 +8,7 @@ interface IContextProps {
 export const UIContext = createContext({} as IContextProps);
 
 export const UIProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const [displaySider, setDisplaySider] = useState<"none" | "block">("block");
+  const [displaySider, setDisplaySider] = useState<"none" | "block">("none");
 
   return (
     <UIContext.Provider value={{ displaySider, setDisplaySider }}>
