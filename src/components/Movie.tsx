@@ -25,6 +25,7 @@ const Movie: React.FC<IMovieProps> = ({ movie }) => {
             position="relative"
           >
             <Image
+              loading="eager"
               layout="fill"
               src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
               alt="movie"
