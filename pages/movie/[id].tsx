@@ -50,6 +50,7 @@ const Detail: NextPage<IDetailProps> = ({ movie }) => {
         overflowX="unset"
         color="white"
         p={{ base: "2", md: "10" }}
+        mb={"14"}
       >
         <IconButton
           _hover={{ bg: "header.200" }}
