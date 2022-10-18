@@ -8,6 +8,7 @@ export interface IMovie {
   title: string;
   vote_average: number;
   vote_count: number;
+  runtime?: string;
 }
 
 export interface IMovieDetail extends Omit<IMovie, "genre_ids"> {
