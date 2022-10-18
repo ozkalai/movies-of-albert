@@ -6,6 +6,9 @@ const nextConfig = {
     locales: ["en-US", "tr-TR"],
     defaultLocale: "en-US",
   },
+  images: {
+    domains: ["image.tmdb.org"],
+  },
 };
 
 module.exports = nextConfig;
