@@ -18,12 +18,9 @@ const Header = () => {
       justifyContent="space-between"
       alignItems="center"
     >
-      <Box
-        display={{ base: "block", md: "none" }}
-        ml={5}
-        w="12px"
-        h="12px"
-      ></Box>
+      {!isDetailPage && (
+        <Box display={{ base: "block", md: "none" }} ml={5} w="12px" h="12px" />
+      )}
       <Box
         textAlign="center"
         display="flex"
